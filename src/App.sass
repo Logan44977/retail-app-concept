@@ -1,0 +1,231 @@
+// these mixins should be added to a base file later
+@mixin for-phone-only 
+  @media (max-width: 599px)
+    @content
+
+@mixin for-lg-desktop
+  @media (min-width: 1800px)
+    @content
+
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,700');
+
+html, body
+  font-family: 'Roboto', sans-serif;
+
+  
+.home
+  @include for-lg-desktop
+    display: flex;
+    height: 100vh;
+    overflow: hidden;
+    width: 100vw;
+
+  &-left
+    @include for-lg-desktop
+      width: calc(100vw/3);  
+      background: #f2f4f7;
+
+  &-center
+    @include for-lg-desktop
+      width: calc(100vw/3);
+      position: relative;
+      background: #e6ebf4;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+  
+  &-right
+    @include for-lg-desktop
+      width: calc(100vw/3);
+      background: #f2f4f7;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+  
+
+.hero
+  padding-left: 5vw;
+
+  &-counter
+    &-holder
+      position: fixed;
+      top: 0;
+      bottom: 0;
+      left: -29px;
+      height: 300px;
+      margin: auto;
+
+  &-text
+    &-holder
+      height: 100vh;
+      position: relative;
+      z-index: 50;
+    &-h1
+      margin-top: 40vh;
+      font-size: 5em;
+      color: #333;
+    &-p
+      font-size: 1.5em;
+      color: #333;
+
+    &-counter
+      font-size: 20em;
+      margin: 0;
+      color: #fff;
+      opacity: 0.8;
+  
+
+// slideshow
+.slide
+  display: none;
+  position: relative;
+  z-index: 100;
+
+  &.active
+    display: block;
+
+  &-img
+    width: 100%;
+
+  &-bg
+    width: 180%
+    opacity: 0.5;
+
+    &-holder
+      position: absolute;
+      top: 0;
+      z-index: 0;
+      left: -40%;
+
+  &-description
+    font-size: 10em;
+    color: #333;
+    font-weight: 700;
+    // opacity: 0.5;
+    position: absolute;
+    width: 80%;
+    height: 80%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    z-index: 1;
+
+.slide-holder
+  width: 80%;
+  height: 80vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+
+// toggles
+.toggle
+  width: 20%;
+  height: 5px;
+  margin: 0 10px;
+  box-sizing: border-box;
+  background: #d3d3d3;
+  position: relative;
+  z-index: 50;
+  cursor: pointer;
+
+  &.active
+    background: #ff5959;
+  
+  &-holder
+    width: 60%;
+    margin: auto;
+    height: 30px
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+  &-text
+    font-size: 1.5em;
+    
+  &-left
+    width: 10%;
+  &-center
+    width: 80%;
+    display: flex;
+    justify-content: center;
+    position: relative;
+    z-index: 50;
+  &-right
+    width: 10%;
+    text-align: right;
+
+// categories
+.category
+  &-name
+    font-size: 2em;
+    color: #333;
+    margin: 2em 0;
+
+    &.active
+      color: #ff5959;
+
+    &-div
+      cursor: pointer;
+
+
+// header
+.header
+  width: 100vw;
+  display: flex;
+  
+  @include for-lg-desktop
+    position: fixed;
+    z-index: 10000;
+    top: 0;
+    height: 100px;
+
+    &-left
+      @include for-lg-desktop
+      width: calc(100vw/3);
+      &-mobile
+        @include for-lg-desktop
+        display: none;
+      &-desktop
+        @include for-lg-desktop
+        height: 100px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      &-img
+        width: 120px;
+        &-holder
+          padding-left: 5vw;
+          width: 40%;
+          text-align: left;
+      &-link
+        width: calc(100%/3);
+        text-align: center;
+        font-size: 1.2em;
+        &-holder
+          width: 60%;
+          height: 100%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+    &-center
+      @include for-lg-desktop
+      width: calc(100vw/3);
+      height: 100px;
+
+    &-right
+      @include for-lg-desktop
+      width: calc(100vw/3);
+      height: 100px;
+      background: red;
+
+      &-mobile
+        @include for-lg-desktop
+        display: none;
+      &-desktop
+        @include for-lg-desktop
+        display: flex;
